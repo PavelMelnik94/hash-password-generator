@@ -266,7 +266,7 @@ function App() {
                     }
                     level={2}
                   >
-                    {currentStep === 4 ? password : ''}
+                    {currentStep === 4 && password}
                   </Title>
                 </Space>
               </div>
