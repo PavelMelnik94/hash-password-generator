@@ -30,7 +30,7 @@ function App() {
   const { Title, Text } = Typography;
   const { Step } = Steps;
 
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('123');
   const [isValid, setIsValid] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
