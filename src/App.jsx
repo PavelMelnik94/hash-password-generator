@@ -7,8 +7,7 @@ import {
   Tooltip,
   Input,
   Checkbox,
-  Button,
-  Spin
+  Button
 } from 'antd';
 import { getThreeSymbol } from './utils';
 import { Steps } from 'antd';
@@ -19,11 +18,6 @@ import chainTimeout from 'chain-timeout';
 
 import './App.scss';
 import 'antd/dist/antd.css';
-
-let find;
-let word;
-let phrase;
-let setting;
 
 function App() {
   const { Header, Content, Footer } = Layout;
@@ -76,7 +70,7 @@ function App() {
       const symbols = form.symbols.value;
 
       setCurrentStep(0);
-      chain ? chain.clear() : null;
+      chain && chain.clear();
       chain = chainTimeout(() => {
         setIsLoading(true);
         setCurrentStep(1);
@@ -120,25 +114,6 @@ function App() {
       }
       // setStartAnimation(false);
     }
-  };
-
-  window.find = find;
-  const animation = () => {
-    find = setTimeout(() => {
-      setIsLoading(true);
-      setCurrentStep(1);
-      word = setInterval(() => {
-        setCurrentStep(2);
-        phrase = setInterval(() => {
-          setCurrentStep(3);
-          setting = setInterval(() => {
-            setCurrentStep(4);
-            setIsLoading(false);
-            return;
-          }, 300);
-        }, 1000);
-      }, 500);
-    });
   };
 
   return (
@@ -256,7 +231,7 @@ function App() {
                 </Button>
               </Card>
 
-              <div className={`password ${currentStep != 4 && 'hide'}`}>
+              <div className={`password ${currentStep !== 4 && 'hide'}`}>
                 <Space direction='horizontal' size='small'>
                   <Title
                     copyable={
