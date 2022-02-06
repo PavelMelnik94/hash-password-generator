@@ -121,40 +121,20 @@ function App() {
       <Layout className='layout'>
         <Header className='header'>
           <div className='logo' />
-          <Title style={{ color: 'white' }}>HASH Password generator</Title>
+          <Title classname='slogan' style={{ color: 'white' }}>
+            HASH Password generator
+          </Title>
         </Header>
-        <Content style={{ padding: '15px 100px', minHeight: '100%' }}>
+        <Content style={{ minHeight: '100%' }}>
           <div className='site-layout-content'>
             <div className='content1'>
-              <Steps direction='vertical' current={currentStep}>
-                <Step
-                  title='Поиск сайта'
-                  description='Сайт для которого нужно сгенерировать пароль'
-                />
-                <Step
-                  title='Генерация по слову'
-                  description='Кодовое слово, что бы сделать пароль сильнее'
-                />
-                <Step
-                  title='Генерация по фразе'
-                  description='Пароль будет надёжнее, если будет введена кодовая фраза'
-                />
-                <Step
-                  title='Настройки'
-                  description='Дополнительные настройки пароля'
-                />
-              </Steps>
-            </div>
-            <div className='content2'>
-              <Card title='' style={{ width: 700 }}>
-                <Space direction='horizontal'>
+              <Card className='mycard' title=''>
+                <Space direction='vertical'>
                   <Title level={3}>Генератор паролей через хеш-таблицу</Title>
-                  <Tooltip title='Вставте в поле ссылку, и генератор зашифрует её через алгоритм хеширования.'>
-                    {' '}
-                    <BulbOutlined
-                      style={{ fontSize: '16px', color: '#181818' }}
-                    />{' '}
-                  </Tooltip>
+                  <Text level={1}>
+                    Вставте в поле ссылку, и генератор зашифрует её через
+                    алгоритм хеширования.
+                  </Text>
                 </Space>
 
                 <div className='input-group'>
@@ -230,6 +210,26 @@ function App() {
                   Сгенерировать
                 </Button>
               </Card>
+            </div>
+            <div className='content2'>
+              <Steps direction='vertical' current={currentStep}>
+                <Step
+                  title='Поиск сайта'
+                  description='Сайт для которого нужно сгенерировать пароль'
+                />
+                <Step
+                  title='Генерация по слову'
+                  description='Кодовое слово, что бы сделать пароль сильнее'
+                />
+                <Step
+                  title='Генерация по фразе'
+                  description='Пароль будет надёжнее, если будет введена кодовая фраза'
+                />
+                <Step
+                  title='Настройки'
+                  description='Дополнительные настройки пароля'
+                />
+              </Steps>
 
               <div className={`password ${currentStep !== 4 && 'hide'}`}>
                 <Space direction='horizontal' size='small'>
@@ -239,7 +239,7 @@ function App() {
                         ? true
                         : false
                     }
-                    level={2}
+                    level={3}
                   >
                     {currentStep === 4 && password}
                   </Title>
