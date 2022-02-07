@@ -1,17 +1,8 @@
 import { useState, useEffect } from 'react';
-import {
-  Card,
-  Layout,
-  Typography,
-  Space,
-  Tooltip,
-  Input,
-  Checkbox,
-  Button
-} from 'antd';
+import { Card, Layout, Typography, Space, Input, Checkbox, Button } from 'antd';
 import { getThreeSymbol } from './utils';
 import { Steps } from 'antd';
-import { BulbOutlined, LinkOutlined, EditOutlined } from '@ant-design/icons';
+import { LinkOutlined, EditOutlined } from '@ant-design/icons';
 import { useDebounce } from 'use-debounce';
 import * as md5 from 'md5';
 import chainTimeout from 'chain-timeout';
@@ -112,7 +103,6 @@ function App() {
       } else {
         setPassword(password);
       }
-      // setStartAnimation(false);
     }
   };
 
