@@ -12,7 +12,6 @@
 }
 .site-layout-content {
   position: inherit;
-  // height: calc(100vh - 140px - 45px);
   margin-bottom: 15px;
   display: flex;
   column-gap: 4rem;
@@ -23,8 +22,6 @@
   }
 
   @media (min-width: 0px) and (max-width: 1100px) {
-    // height: calc(100vh - 140px - 45px);
-    // overflow: auto;
     flex-direction: column;
     .content1 {
       margin: 0 auto;
@@ -93,11 +90,6 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  border-radius: 5px !important;
-  -webkit-border-radius: 5px !important;
-  -moz-border-radius: 5px !important;
-  -ms-border-radius: 5px !important;
-  -o-border-radius: 5px !important;
   .form-label {
     color: grey;
     font-size: 14px;
@@ -106,14 +98,39 @@
   .input-group {
     margin-bottom: 1rem;
   }
-  @media (min-width: 0px) and (max-width: 1400px) {
-    padding: 10px;
+}
+@media (min-width: 0px) and (max-width: 550px) {
+  .header {
+    padding: 0 !important;
+    .ant-typography {
+      font-size: 1.5rem !important;
+    }
+  }
+  .ant-card-body {
+    padding: 15px;
+
+    h3.ant-typography {
+      font-size: 17px !important;
+    }
+    .ant-typography {
+      font-size: 14px !important;
+    }
+
+    .form-label {
+      color: grey;
+      font-size: 12px;
+      padding-left: 5px;
+      margin-bottom: 2px;
+    }
+    .input-group {
+      margin-bottom: 0.5rem;
+    }
+    .ant-btn {
+      width: 100% !important;
+    }
   }
 }
 
-// .input-error {
-//   background-color: rgb(253, 204, 204) !important;
-// }
 .ant-typography {
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -133,7 +150,7 @@
   margin-top: 3rem;
   padding: 1rem;
   width: 500px;
-  height: 100px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,5 +159,5 @@
 }
 
 .ant-layout-footer {
-  margin-top: 190px;
+  margin-top: 10px;
 }

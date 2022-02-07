@@ -239,7 +239,7 @@ function App() {
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Pavel Melnik ©2022 Created by Ant Design
+          Pavel Melnik ©2022 created with Ant Design
         </Footer>
       </Layout>
     </div>
