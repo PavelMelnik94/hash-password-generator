@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Layout } from 'antd';
 import { useDebounce } from 'use-debounce';
+import Title from 'antd/lib/typography/Title';
 
 import './App.scss';
 import 'antd/dist/antd.css';
 import useGenerate from './useGenerate';
-import Header from './partials/Header';
 import SideA from './partials/SideA';
 import SideB from './partials/SideB';
 
 function App() {
-  const { Content, Footer } = Layout;
-
+  const { Content, Footer, Header } = Layout;
   const [form, setForm] = useState({
     address: { key: 'address', value: '' },
     salt: { key: 'salt', value: '' },
@@ -52,7 +51,12 @@ function App() {
   return (
     <div className='app'>
       <Layout className='layout'>
-        <Header />
+        <Header className='header'>
+          <div className='logo' />
+          <Title className='slogan' style={{ color: 'white' }}>
+            HASH Password generator
+          </Title>
+        </Header>
         <Content style={{ minHeight: '100%' }}>
           <div className='site-layout-content'>
             <SideA
