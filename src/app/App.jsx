@@ -24,6 +24,21 @@ function App() {
   const [debouncedValue] = useDebounce(form?.address?.value || '', 500);
 
   useEffect(() => {
+    function vibrating(time) {
+      navigator.vibrate =
+        navigator.vibrate ||
+        navigator.webkitVibrate ||
+        navigator.mozVibrate ||
+        navigator.msVibrate;
+      if (navigator.vibrate) {
+        navigator.vibrate(time);
+      }
+    }
+
+    if (currentStep === 4) vibrating(500);
+  }, [currentStep]);
+
+  useEffect(() => {
     const validate = () => {
       const expression =
         /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;

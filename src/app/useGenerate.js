@@ -2,15 +2,25 @@ import React, { useState } from 'react';
 import * as md5 from 'md5';
 import chainTimeout from 'chain-timeout';
 import { getThreeSymbol } from '../utils';
+import { useEffect } from 'react/cjs/react.production.min';
 
 const useGenerate = (data) => {
   const [password, setPassword] = useState('123');
   const [currentStep, setCurrentStep] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
+    setIsMobile(true);
+  }
 
   let chain;
 
-  const generate = () => {
+  const generate = async () => {
     const site = data.address.value;
     const salt = data.salt.value;
     const phrases = data.phrase.value;
@@ -51,30 +61,21 @@ const useGenerate = (data) => {
         .join('-')
         .slice(0, 8);
       setPassword(str + getThreeSymbol());
-      vibrating(700);
     } else if (dividers) {
       let str = password
         .match(/.{1,3}/g)
         .join('-')
         .slice(0, 11);
       setPassword(str);
-      vibrating(700);
     } else {
       setPassword(password);
-      vibrating(700);
+    }
+
+    if (isMobile) {
+      window.scrollY = 1000;
     }
   };
 
-  function vibrating(time) {
-    navigator.vibrate =
-      navigator.vibrate ||
-      navigator.webkitVibrate ||
-      navigator.mozVibrate ||
-      navigator.msVibrate;
-    if (navigator.vibrate) {
-      navigator.vibrate(time);
-    }
-  }
   return {
     password,
     currentStep,
