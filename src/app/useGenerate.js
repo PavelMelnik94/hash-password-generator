@@ -2,21 +2,11 @@ import React, { useState } from 'react';
 import * as md5 from 'md5';
 import chainTimeout from 'chain-timeout';
 import { getThreeSymbol } from '../utils';
-import { useEffect } from 'react/cjs/react.production.min';
 
 const useGenerate = (data) => {
   const [password, setPassword] = useState('123');
   const [currentStep, setCurrentStep] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  if (
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    )
-  ) {
-    setIsMobile(true);
-  }
 
   let chain;
 
@@ -71,7 +61,11 @@ const useGenerate = (data) => {
       setPassword(password);
     }
 
-    if (isMobile) {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
       window.scrollY = 1000;
     }
   };
