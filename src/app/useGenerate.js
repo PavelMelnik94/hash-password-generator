@@ -66,7 +66,7 @@ const useGenerate = (data) => {
         navigator.userAgent
       )
     ) {
-      window.scrollY = 1000;
+      window.scrollTo(0, 1000);
     }
   };
 
