@@ -94,18 +94,31 @@ function App() {
           .join('-')
           .slice(0, 8);
         setPassword(str + getThreeSymbol());
+        vibrating(700);
       } else if (dividers) {
         let str = password
           .match(/.{1,3}/g)
           .join('-')
           .slice(0, 11);
         setPassword(str);
+        vibrating(700);
       } else {
         setPassword(password);
+        vibrating(700);
       }
     }
   };
 
+  const vibrating = (time) => {
+    navigator.vibrate =
+      navigator.vibrate ||
+      navigator.webkitVibrate ||
+      navigator.mozVibrate ||
+      navigator.msVibrate;
+    if (navigator.vibrate) {
+      navigator.vibrate(time);
+    }
+  };
   return (
     <div className='app'>
       <Layout className='layout'>
